@@ -10,9 +10,9 @@ function App() {
             <section className="main-section">
                 <Navbar/>
 
-                <div className="page-heading py-16">
-                    <h1>Track Your Application & Resume Ratings</h1>
-                    <h2>Review your submissions and check AI-powered feedback.</h2>
+                <div className="page-heading py-16 max-sm:py-4">
+                    <h1>Stay Ahead in Your Job Hunt</h1>
+                    <h2>Analyze, improve, and perfect your resume with smart AI feedback.</h2>
                 </div>
 
                 <div className="resumes-section">
