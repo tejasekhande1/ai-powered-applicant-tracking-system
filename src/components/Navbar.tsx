@@ -7,8 +7,8 @@ function Navbar() {
                 <p className="text-2xl font-bold text-gradient">MatchMind.ai</p>
             </Link>
 
-            <Link to="/upload" className="primary-button w-fit">
-                Upload Resume
+            <Link to="/upload">
+                <span className="primary-button w-fit">Upload Resume</span>
             </Link>
         </nav>
     )
