@@ -1,29 +1,28 @@
 import './App.css'
-import Navbar from "./components/Navbar.tsx";
-import {resumes} from "./constants";
-import ResumeCard from "./components/ResumeCard.tsx";
+import {Routes} from "react-router-dom";
+import {Route} from "react-router";
+import Home from "./pages/Home.tsx";
+import Auth from "./pages/Auth.tsx";
+import {usePuterStore} from "./lib/puter.ts";
+import {useEffect} from "react";
+import Loading from "./components/Loading.tsx";
 
 function App() {
+    const {init, isLoading} = usePuterStore();
+
+    useEffect(() => {
+        init();
+    }, [])
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
-        <main className="bg-[url('/images/bg-main.svg')] bg-cover">
-            <section className="main-section">
-                <Navbar/>
-
-                <div className="page-heading py-16 max-sm:py-4">
-                    <h1>Stay Ahead in Your Job Hunt</h1>
-                    <h2>Analyze, improve, and perfect your resume with smart AI feedback.</h2>
-                </div>
-
-                <div className="resumes-section">
-                    {
-                        resumes.map((resume: Resume, i: number) => (
-                            <ResumeCard key={i} resume={resume}/>
-                        ))
-                    }
-                </div>
-            </section>
-        </main>
+        <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/auth" element={<Auth/>}/>
+        </Routes>
     )
 }
 
