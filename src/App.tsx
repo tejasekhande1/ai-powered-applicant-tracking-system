@@ -1,9 +1,12 @@
 import './App.css'
+import Navbar from "./components/Navbar.tsx";
 
 function App() {
 
     return (
         <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+            <Navbar />
+
             <section className="main-section">
                 <div className="page-heading">
                     <h1>Track Your Application & Resume Ratings</h1>
