@@ -1,12 +1,27 @@
 import Navbar from "../components/Navbar.tsx";
 import { type FormEvent, useState } from "react";
+import Uploader from "../components/Uploader.tsx";
 
 function Upload() {
     const [isProcessing, _setIsProcessing] = useState(false);
     const [statusText, _setStatusText] = useState("");
+    const [_file, setFile] = useState<File | null>(null);
+
+    const handleFileSelect = (file: File | null) => {
+        setFile(file);
+    };
 
     const handleUploadResumeForm = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const form = event.currentTarget.closest("form");
+
+        if (!form) return;
+
+        const formData = new FormData(form);
+
+        const _companyName = formData.get("company-name");
+        const _jobTitile = formData.get("job-title");
+        const jobDescription = formData.get("job-description");
     };
 
     return (
@@ -89,7 +104,8 @@ function Upload() {
                                 <label htmlFor="upload-resume">
                                     Upload Resume
                                 </label>
-                                {/*Todo: May be create resume uploader component ?*/}
+
+                                <Uploader onFileSelect={handleFileSelect} />
                             </div>
 
                             <button className={"primary-button"} type="submit">
