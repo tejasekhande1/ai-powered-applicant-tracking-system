@@ -2,8 +2,8 @@ import Navbar from "../components/Navbar.tsx";
 import { useState } from "react";
 
 function Upload() {
-    const [isProcessing, setIsProcessing] = useState(false);
-    const [statusText, setStatusText] = useState("");
+    const [isProcessing, _setIsProcessing] = useState(false);
+    const [statusText, _setStatusText] = useState("");
     return (
         <main className="bg-[url('/images/bg-main.svg')] bg-cover">
             <section className="main-section">
