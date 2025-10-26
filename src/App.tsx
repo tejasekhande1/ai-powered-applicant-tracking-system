@@ -6,6 +6,7 @@ import Auth from "./pages/Auth.tsx";
 import {usePuterStore} from "./lib/puter.ts";
 import {useEffect} from "react";
 import Loading from "./components/Loading.tsx";
+import Upload from "./pages/Upload.tsx";
 
 function App() {
     const {init, isLoading} = usePuterStore();
@@ -22,6 +23,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/auth" element={<Auth/>}/>
+            <Route path="/upload" element={<Upload/>}/>
         </Routes>
     )
 }
