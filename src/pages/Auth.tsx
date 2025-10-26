@@ -1,11 +1,11 @@
-import {usePuterStore} from "../lib/puter.ts";
-import {useEffect} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import { usePuterStore } from "../lib/puter.ts";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Auth() {
-    const {isLoading, auth} = usePuterStore();
+    const { isLoading, auth } = usePuterStore();
     const location = useLocation();
-    const next = location.search.split("next=")[1]
+    const next = location.search.split("next=")[1];
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -29,15 +29,24 @@ function Auth() {
 
                     <div>
                         {isLoading ? (
-                            <button className="auth-button animate-pulse" disabled>
+                            <button
+                                className="auth-button animate-pulse"
+                                disabled
+                            >
                                 <p>Signing you in...</p>
                             </button>
                         ) : auth.isAuthenticated ? (
-                            <button className="auth-button w-full" onClick={auth.signOut}>
+                            <button
+                                className="auth-button w-full"
+                                onClick={auth.signOut}
+                            >
                                 Log Out
                             </button>
                         ) : (
-                            <button className="auth-button w-full" onClick={auth.signIn}>
+                            <button
+                                className="auth-button w-full"
+                                onClick={auth.signIn}
+                            >
                                 Log In
                             </button>
                         )}
@@ -45,7 +54,7 @@ function Auth() {
                 </div>
             </div>
         </main>
-    )
+    );
 }
 
 export default Auth;

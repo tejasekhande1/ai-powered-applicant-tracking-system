@@ -1,4 +1,4 @@
-import {create} from "zustand";
+import { create } from "zustand";
 
 declare global {
     interface Window {
@@ -35,7 +35,10 @@ declare global {
                 get: (key: string) => Promise<string | null>;
                 set: (key: string, value: string) => Promise<boolean>;
                 delete: (key: string) => Promise<boolean>;
-                list: (pattern: string, returnValues?: boolean) => Promise<string[]>;
+                list: (
+                    pattern: string,
+                    returnValues?: boolean
+                ) => Promise<string[]>;
                 flush: () => Promise<boolean>;
             };
         };
@@ -159,7 +162,9 @@ export const usePuterStore = create<PuterStore>((set, get) => {
             }
         } catch (err) {
             const msg =
-                err instanceof Error ? err.message : "Failed to check auth status";
+                err instanceof Error
+                    ? err.message
+                    : "Failed to check auth status";
             setError(msg);
             return false;
         }
@@ -236,7 +241,8 @@ export const usePuterStore = create<PuterStore>((set, get) => {
                 isLoading: false,
             });
         } catch (err) {
-            const msg = err instanceof Error ? err.message : "Failed to refresh user";
+            const msg =
+                err instanceof Error ? err.message : "Failed to refresh user";
             setError(msg);
         }
     };
@@ -425,7 +431,8 @@ export const usePuterStore = create<PuterStore>((set, get) => {
             getUser: () => get().auth.user,
         },
         fs: {
-            write: (path: string, data: string | File | Blob) => write(path, data),
+            write: (path: string, data: string | File | Blob) =>
+                write(path, data),
             read: (path: string) => readFile(path),
             readDir: (path: string) => readDir(path),
             upload: (files: File[] | Blob[]) => upload(files),
@@ -438,7 +445,8 @@ export const usePuterStore = create<PuterStore>((set, get) => {
                 testMode?: boolean,
                 options?: PuterChatOptions
             ) => chat(prompt, imageURL, testMode, options),
-            feedback: (path: string, message: string) => feedback(path, message),
+            feedback: (path: string, message: string) =>
+                feedback(path, message),
             img2txt: (image: string | File | Blob, testMode?: boolean) =>
                 img2txt(image, testMode),
         },

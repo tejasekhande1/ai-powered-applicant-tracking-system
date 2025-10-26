@@ -1,4 +1,4 @@
-import {Link} from "react-router";
+import { Link } from "react-router";
 
 function Navbar() {
     return (
@@ -11,7 +11,7 @@ function Navbar() {
                 Upload Resume
             </Link>
         </nav>
-    )
+    );
 }
 
 export default Navbar;
