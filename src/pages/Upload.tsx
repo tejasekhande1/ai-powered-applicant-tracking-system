@@ -1,9 +1,14 @@
 import Navbar from "../components/Navbar.tsx";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 
 function Upload() {
     const [isProcessing, _setIsProcessing] = useState(false);
     const [statusText, _setStatusText] = useState("");
+
+    const handleUploadResumeForm = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+    };
+
     return (
         <main className="bg-[url('/images/bg-main.svg')] bg-cover">
             <section className="main-section">
@@ -35,6 +40,62 @@ function Upload() {
                                 to make your application stand out.
                             </h2>
                         </>
+                    )}
+
+                    {!isProcessing && (
+                        <form
+                            id="resume-upload-form"
+                            className={"flex flex-col gap-4 my-8"}
+                            onSubmit={handleUploadResumeForm}
+                        >
+                            <div className="form-div">
+                                <label htmlFor="company-name">
+                                    Company Name
+                                </label>
+
+                                <input
+                                    id="company-name"
+                                    type="text"
+                                    name="company-name"
+                                    placeholder="Company Name"
+                                />
+                            </div>
+
+                            <div className="form-div">
+                                <label htmlFor="job-title">Job Title</label>
+
+                                <input
+                                    id="cjob-title"
+                                    type="text"
+                                    name="job-title"
+                                    placeholder="Job Title"
+                                />
+                            </div>
+
+                            <div className="form-div">
+                                <label htmlFor="job-description">
+                                    Job Description
+                                </label>
+
+                                <textarea
+                                    id="job-description"
+                                    name="job-description"
+                                    placeholder="Job Description"
+                                    rows={5}
+                                />
+                            </div>
+
+                            <div className="form-div">
+                                <label htmlFor="upload-resume">
+                                    Upload Resume
+                                </label>
+                                {/*Todo: May be create resume uploader component ?*/}
+                            </div>
+
+                            <button className={"primary-button"} type="submit">
+                                Upload
+                            </button>
+                        </form>
                     )}
                 </div>
             </section>
